@@ -1,0 +1,13 @@
+[
+  {
+    "subsystem": "station",
+    "id": "s-fault",
+    "subject": "S1",
+    "action": "fault",
+    "data": {
+      "code": "power"
+    },
+    "at": "2026-12-09",
+    "version": 2
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "subsystem": "assessment",
+    "id": "a-incident",
+    "subject": "C1",
+    "action": "incident",
+    "data": {
+      "station_id": "S1",
+      "independent_witness": true
+    },
+    "at": "2026-12-10",
+    "version": 2
+  },
+  {
+    "subsystem": "assessment",
+    "id": "a-appeal",
+    "subject": "C1",
+    "action": "appeal",
+    "data": {
+      "reason": "equipment"
+    },
+    "at": "2026-12-11",
+    "version": 2
+  }
+]

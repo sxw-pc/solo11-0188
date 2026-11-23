@@ -1,0 +1,32 @@
+[
+  {
+    "subsystem": "station",
+    "id": "s-machine",
+    "subject": "S1",
+    "action": "machine",
+    "data": {
+      "window": "2026-12-10",
+      "calibrated_until": "2027-01-01",
+      "state": "available",
+      "required_tools": [
+        "v2"
+      ],
+      "present_tools": [
+        "v2"
+      ]
+    },
+    "at": "2026-12-01",
+    "version": 1
+  },
+  {
+    "subsystem": "station",
+    "id": "s-reserve",
+    "subject": "S1",
+    "action": "reserve",
+    "data": {
+      "candidate_id": "C1"
+    },
+    "at": "2026-12-01",
+    "version": 1
+  }
+]

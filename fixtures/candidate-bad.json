@@ -1,0 +1,13 @@
+[
+  {
+    "subsystem": "candidate",
+    "id": "c-revoke",
+    "subject": "C1",
+    "action": "revoke",
+    "data": {
+      "certificate_id": "Q1"
+    },
+    "at": "2026-12-09",
+    "version": 2
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "subsystem": "assessment",
+    "id": "a-attempt",
+    "subject": "C1",
+    "action": "attempt",
+    "data": {
+      "station_id": "S1",
+      "trainer_id": "T1",
+      "required_steps": [
+        "lockout",
+        "assemble"
+      ],
+      "completed_steps": [
+        "lockout",
+        "assemble"
+      ]
+    },
+    "at": "2026-12-01",
+    "version": 1
+  },
+  {
+    "subsystem": "assessment",
+    "id": "a-review1",
+    "subject": "C1",
+    "action": "review",
+    "data": {
+      "assessor_id": "A1",
+      "score": 82
+    },
+    "at": "2026-12-01",
+    "version": 1
+  },
+  {
+    "subsystem": "assessment",
+    "id": "a-review2",
+    "subject": "C1",
+    "action": "review",
+    "data": {
+      "assessor_id": "A2",
+      "score": 85
+    },
+    "at": "2026-12-01",
+    "version": 1
+  }
+]

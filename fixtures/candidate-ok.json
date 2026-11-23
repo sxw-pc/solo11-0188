@@ -1,0 +1,27 @@
+[
+  {
+    "subsystem": "candidate",
+    "id": "c-register",
+    "subject": "C1",
+    "action": "register",
+    "data": {
+      "booking_id": "B1",
+      "exam_at": "2026-12-10"
+    },
+    "at": "2026-12-01",
+    "version": 1
+  },
+  {
+    "subsystem": "candidate",
+    "id": "c-cert",
+    "subject": "C1",
+    "action": "certificate",
+    "data": {
+      "certificate_id": "Q1",
+      "valid_from": "2026-01-01",
+      "valid_to": "2027-01-01"
+    },
+    "at": "2026-12-01",
+    "version": 1
+  }
+]
