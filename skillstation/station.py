@@ -28,6 +28,6 @@ def calculate(events,candidates):
             ('工位校准是否覆盖考评窗口','可用' if calibrated else '封锁','设备校准覆盖完整考试窗口'),
             ('工具版本是否满足考试项目要求','齐备' if tools else '缺件','工具版本集合满足项目清单'),
             ('并发工位预留由谁取得时段',winner['data']['candidate_id'] if winner else '无确认','有资格考生按冻结时间排序独占工位'),
-            ('设备中断是否产生补考权','需补考' if broken else '无需','故障或独立事故见证使原工位不可继续')]:
+            ('设备中断是否产生补考权并形成可核验裁定','需补考' if broken else '无需','故障或独立事故见证使原工位不可继续')]:
             decisions.append((station,name,result,reason,evidence))
     return states,entities,decisions

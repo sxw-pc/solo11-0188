@@ -26,11 +26,11 @@ class SkillWorkflow(unittest.TestCase):
         self.assertEqual('撤销',result(self.db,'C1','证书追撤是否撤销未完成考试资格'))
     def test_incident_freezes_station_and_appeal(self):
         self.baseline();self.load('assessment','bad')
-        self.assertEqual('需补考',result(self.db,'S1','设备中断是否产生补考权'))
+        self.assertEqual('需补考',result(self.db,'S1','设备中断是否产生补考权并形成可核验裁定'))
         self.assertEqual('重开',result(self.db,'C1','迟到申诉是否重开成绩与工位责任'))
     def test_fault_propagates_to_score(self):
         self.baseline();self.load('station','bad')
-        self.assertEqual('需补考',result(self.db,'S1','设备中断是否产生补考权'))
+        self.assertEqual('需补考',result(self.db,'S1','设备中断是否产生补考权并形成可核验裁定'))
         self.assertEqual('不合格或待核',result(self.db,'C1','关键步骤缺失是否判实操合格'))
     def test_conflicting_event_is_atomic(self):
         self.baseline();before=report(self.db)
