@@ -1,0 +1,8 @@
+{
+  "station":"S7","people":8,"clear_by_minute":15,
+  "routes":[
+    {"id":"east","station":"S7","minutes":4,"capacity":8,"accessible":true,"smoke":true},
+    {"id":"west","station":"S7","minutes":6,"capacity":4,"accessible":true,"smoke":false},
+    {"id":"south","station":"S7","minutes":8,"capacity":8,"accessible":true,"smoke":false}
+  ]
+}
