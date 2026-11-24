@@ -1,7 +1,86 @@
 {
-  "canceled": "C1",
+  "session": {
+    "id": "exam-2026-12",
+    "canceled": ["C1"],
+    "attending": ["C2"]
+  },
   "payments": [
-    {"id":"p1","payer":"Employer-E","amount":600,"beneficiaries":["C1","C2"]},
-    {"id":"p2","payer":"C2","amount":100,"beneficiaries":["C2"]}
+    {
+      "id": "p1",
+      "payer": "Employer-E",
+      "amount": 600,
+      "beneficiaries": ["C1", "C2"],
+      "status": "cleared"
+    },
+    {
+      "id": "p2",
+      "payer": "C2",
+      "amount": 100,
+      "beneficiaries": ["C2"],
+      "status": "cleared"
+    }
+  ],
+  "price_table": {
+    "C1": 300,
+    "C2": 400
+  },
+  "seals": {
+    "seal-e": {
+      "holder": "Employer-E",
+      "status": "valid"
+    },
+    "seal-e-revoked": {
+      "holder": "Employer-E",
+      "status": "revoked"
+    },
+    "seal-c2": {
+      "holder": "C2",
+      "status": "valid"
+    }
+  },
+  "directives": {
+    "refund_c1_to_employer": {
+      "id": "d-refund-c1",
+      "type": "refund",
+      "seal": "seal-e",
+      "payment_id": "p1",
+      "candidate": "C1",
+      "amount": 300,
+      "to_account": "Employer-E original payment account"
+    },
+    "credit_c1_to_c3": {
+      "id": "d-credit-c3",
+      "type": "credit",
+      "seal": "seal-e",
+      "payment_id": "p1",
+      "candidate": "C1",
+      "amount": 300,
+      "credit_to": "C3"
+    },
+    "release_c3_to_employer": {
+      "id": "d-release-c3",
+      "type": "release",
+      "seal": "seal-e",
+      "payment_id": "p1",
+      "candidate": "C3",
+      "credit_from": "C3",
+      "amount": 300
+    }
+  },
+  "chargebacks": {
+    "p1": {
+      "id": "cb-p1",
+      "payment_id": "p1",
+      "reason": "later revocation / disputed group payment"
+    }
+  },
+  "settlement": {
+    "id": "stmt-001",
+    "candidates": ["C1", "C2"]
+  },
+  "expected_allocation": [
+    {"share_id": "p1:C1", "payment_id": "p1", "payer": "Employer-E", "candidate": "C1", "amount": 300},
+    {"share_id": "p1:C2", "payment_id": "p1", "payer": "Employer-E", "candidate": "C2", "amount": 300},
+    {"share_id": "p2:C2", "payment_id": "p2", "payer": "C2", "candidate": "C2", "amount": 100}
   ]
 }
