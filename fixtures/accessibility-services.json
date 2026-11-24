@@ -1,11 +1,49 @@
 {
-  "candidates":["C1","C2"],
-  "requests":[
-    {"candidate":"C1","mode":"read-aloud","start":9,"duration":1},
-    {"candidate":"C2","mode":"read-aloud","start":9,"duration":1}
+  "candidates": ["C1", "C2"],
+  "staff": ["invigilator-I1", "access-officer-A1"],
+  "paper": {"id": "paper-2026-11", "items": ["Q1", "Q2", "Q3", "Q4"]},
+  "requests": [
+    {"candidate": "C1", "mode": "read-aloud", "start": 9, "duration": 1},
+    {"candidate": "C2", "mode": "read-aloud", "start": 9, "duration": 1}
   ],
-  "resources":[
-    {"id":"reader-R1","mode":"read-aloud","window":[9,12]},
-    {"id":"device-D1","mode":"screen-reader","window":[9,12]}
-  ]
+  "resources": [
+    {"id": "reader-R1", "kind": "human", "mode": "read-aloud", "window": [9, 12]},
+    {"id": "device-D1", "kind": "device", "mode": "screen-reader", "window": [9, 12], "offline": true}
+  ],
+  "checkins": [
+    {"candidate": "C1", "at": 8.75, "by": "invigilator-I1"},
+    {"candidate": "C2", "at": 8.8, "by": "invigilator-I1"}
+  ],
+  "plans": {
+    "plan-delay": {
+      "title": "C2 接受延至 11 时由真人读题，设备不启用",
+      "signatures": {"C1": "sig-C1-delay", "C2": "sig-C2-delay"},
+      "services": [
+        {"candidate": "C1", "mode": "read-aloud", "resource": "reader-R1", "room": "room-1", "start": 9, "end": 10},
+        {"candidate": "C2", "mode": "read-aloud", "resource": "reader-R1", "room": "room-1", "start": 11, "end": 12}
+      ],
+      "sessions": [
+        {"id": "read-log-C1", "resource": "reader-R1", "candidate": "C1", "room": "room-1", "start": 9, "end": 10, "paper": "paper-2026-11"},
+        {"id": "read-log-C2", "resource": "reader-R1", "candidate": "C2", "room": "room-1", "start": 11, "end": 12, "paper": "paper-2026-11"}
+      ]
+    },
+    "plan-device": {
+      "title": "C2 验收等效题版并签署改用离线屏幕朗读，两人 9 时同始",
+      "signatures": {"C1": "sig-C1-device", "C2": "sig-C2-device"},
+      "services": [
+        {"candidate": "C1", "mode": "read-aloud", "resource": "reader-R1", "room": "room-1", "start": 9, "end": 10},
+        {"candidate": "C2", "mode": "screen-reader", "resource": "device-D1", "room": "room-2", "start": 9, "end": 10}
+      ],
+      "consents": [
+        {"candidate": "C2", "mode": "screen-reader", "signed": true, "at": 8.5, "witness": "access-officer-A1"}
+      ],
+      "formats": [
+        {"resource": "device-D1", "paper": "paper-2026-11", "items": ["Q1", "Q2", "Q3", "Q4"], "accepted_by": "C2"}
+      ],
+      "sessions": [
+        {"id": "read-log-C1", "resource": "reader-R1", "candidate": "C1", "room": "room-1", "start": 9, "end": 10, "paper": "paper-2026-11"},
+        {"id": "offline-receipt-C2", "resource": "device-D1", "candidate": "C2", "room": "room-2", "start": 9, "end": 10, "paper": "paper-2026-11", "offline": true}
+      ]
+    }
+  }
 }
