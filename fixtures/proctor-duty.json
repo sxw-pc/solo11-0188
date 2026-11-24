@@ -1,0 +1,4 @@
+[
+  {"id":"room-1","person":"P1","device":"door","room":"A","start":9,"end":13},
+  {"id":"room-2","person":"P1","device":"tablet","room":"B","start":9,"end":13}
+]
