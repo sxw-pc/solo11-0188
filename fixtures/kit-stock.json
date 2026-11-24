@@ -1,10 +1,66 @@
 {
+  "schema": "kit-stock/v2",
+  "note": "一次性过滤件批次联合预留种子：F1=A级5件2026-05-02到期，F2=B级5件2026-05-30到期；exam-A 5月1日需A级4件，exam-B 5月5日需B级4件。质检结论以 qc_documents / recall_originals 中的原件为准。",
   "lots": [
-    {"id":"F1","part":"filter","quantity":5,"expiry":"2026-05-02","grade":"A"},
-    {"id":"F2","part":"filter","quantity":5,"expiry":"2026-05-30","grade":"B"}
+    {
+      "id": "F1",
+      "part": "filter",
+      "quantity": 5,
+      "expiry": "2026-05-02",
+      "grade": "A",
+      "location": "WH-MAIN",
+      "status": "released",
+      "qc_document": "QC-F1-A",
+      "serials": ["F1-01", "F1-02", "F1-03", "F1-04", "F1-05"]
+    },
+    {
+      "id": "F2",
+      "part": "filter",
+      "quantity": 5,
+      "expiry": "2026-05-30",
+      "grade": "B",
+      "location": "WH-MAIN",
+      "status": "released",
+      "qc_document": "QC-F2-B",
+      "serials": ["F2-01", "F2-02", "F2-03", "F2-04", "F2-05"]
+    }
   ],
   "requests": [
-    {"id":"exam-A","part":"filter","quantity":4,"date":"2026-05-01","required_grade":"A"},
-    {"id":"exam-B","part":"filter","quantity":4,"date":"2026-05-05","required_grade":"B"}
+    {"id": "exam-A", "part": "filter", "quantity": 4, "date": "2026-05-01", "required_grade": "A"},
+    {"id": "exam-B", "part": "filter", "quantity": 4, "date": "2026-05-05", "required_grade": "B"}
+  ],
+  "qc_documents": [
+    {
+      "id": "QC-F1-A",
+      "type": "release_certificate",
+      "lot_id": "F1",
+      "decision": "released",
+      "grade": "A",
+      "quantity": 5,
+      "issued_at": "2026-04-28",
+      "note": "质检放行证明：F1 的 A 级 5 件验收合格，可用于 exam-A。"
+    },
+    {
+      "id": "QC-F2-B",
+      "type": "release_certificate",
+      "lot_id": "F2",
+      "decision": "released",
+      "grade": "B",
+      "quantity": 5,
+      "issued_at": "2026-04-28",
+      "note": "质检放行证明：F2 的 B 级 5 件验收合格。"
+    }
+  ],
+  "recall_originals": [
+    {
+      "id": "RC-F1-SUPPLIER",
+      "type": "supplier_batch_recall",
+      "lot_id": "F1",
+      "decision": "quarantined",
+      "timing": "before_packing",
+      "issued_at": "2026-04-30",
+      "serials": ["F1-01", "F1-02", "F1-03", "F1-04", "F1-05"],
+      "note": "供应商批次召回原件：F1 在配包前已被隔离，不得发往 exam-A。"
+    }
   ]
 }
