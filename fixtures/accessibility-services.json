@@ -1,0 +1,11 @@
+{
+  "candidates":["C1","C2"],
+  "requests":[
+    {"candidate":"C1","mode":"read-aloud","start":9,"duration":1},
+    {"candidate":"C2","mode":"read-aloud","start":9,"duration":1}
+  ],
+  "resources":[
+    {"id":"reader-R1","mode":"read-aloud","window":[9,12]},
+    {"id":"device-D1","mode":"screen-reader","window":[9,12]}
+  ]
+}
