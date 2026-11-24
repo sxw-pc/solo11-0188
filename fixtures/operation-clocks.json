@@ -1,4 +1,102 @@
-[
-  {"id":"cam-open","device":"camera","tick":10,"action":"open_panel","received_at":30},
-  {"id":"tool-off","device":"meter","tick":20,"action":"deenergize","received_at":31}
-]
+{
+  "schema": "skillstation.operation_clocks/2",
+  "session_id": "S1-2026-11-24-E1",
+  "tick_ms": {"camera": 100.0, "meter": 50.0},
+  "clock_constraints": [
+    {"device": "camera", "offset_max_ticks": 15, "drift_max_ppm": 100.0},
+    {"device": "meter", "offset_max_ticks": 15, "drift_max_ppm": 100.0}
+  ],
+  "anchors": [
+    {
+      "device": "camera",
+      "calibration_version": "cam-cal-2026-11-24-A",
+      "tick": 0,
+      "ref_ms": 1000.0,
+      "acquired_at": "2026-11-24T08:59:00+08:00",
+      "evidence_sha256": "anchor-camera-seed"
+    },
+    {
+      "device": "meter",
+      "calibration_version": "meter-cal-2026-11-24-A",
+      "tick": 0,
+      "ref_ms": 2000.0,
+      "acquired_at": "2026-11-24T08:59:00+08:00",
+      "evidence_sha256": "anchor-meter-seed"
+    }
+  ],
+  "camera_frames": [
+    {"frame_id": "cam-0008", "seq": 8, "tick": 8, "action": null, "received_at": 3000},
+    {"frame_id": "cam-0009", "seq": 9, "tick": 9, "action": null, "received_at": 3010},
+    {"frame_id": "cam-0010", "seq": 10, "tick": 10, "action": "open_panel", "received_at": 3020},
+    {"frame_id": "cam-0012", "seq": 12, "tick": 12, "action": null, "received_at": 3040}
+  ],
+  "meter_records": [
+    {"record_id": "meter-0019", "seq": 19, "tick": 19, "action": null, "received_at": 3015},
+    {
+      "record_id": "meter-0020",
+      "seq": 20,
+      "tick": 20,
+      "action": "deenergize",
+      "received_at": 3005,
+      "contact_receipt": {
+        "contact": "main-breaker-aux",
+        "state": "closed",
+        "issued_tick": 20,
+        "receipt_id": "rcpt-20261124-0020",
+        "evidence_sha256": "contact-receipt-seed"
+      }
+    },
+    {
+      "record_id": "meter-0020",
+      "seq": 20,
+      "tick": 20,
+      "action": "deenergize",
+      "received_at": 3105,
+      "retransmit": true,
+      "contact_receipt": {
+        "contact": "main-breaker-aux",
+        "state": "closed",
+        "issued_tick": 20,
+        "receipt_id": "rcpt-20261124-0020",
+        "evidence_sha256": "contact-receipt-seed"
+      }
+    },
+    {"record_id": "meter-0021", "seq": 21, "tick": 21, "action": null, "received_at": 3025}
+  ],
+  "supplements": {
+    "supplement-A-shared-pulse": {
+      "scope": "shared-pulse",
+      "acquired_at": "2026-11-24T10:40:00+08:00",
+      "calibration_versions": ["cam-cal-2026-11-24-A", "meter-cal-2026-11-24-A"],
+      "pulses": [
+        {"pulse_id": "pulse-1", "camera_tick": 3, "meter_tick": 10, "tolerance_ms": 0.5},
+        {"pulse_id": "pulse-2", "camera_tick": 15, "meter_tick": 34, "tolerance_ms": 0.5}
+      ],
+      "contact_trajectory": {
+        "trace_id": "contact-run-20261124-01",
+        "samples": [
+          {"event": "pulse-1", "contact": "open"},
+          {"event": "pulse-2", "contact": "open"}
+        ],
+        "evidence_sha256": "contact-trace-seed"
+      }
+    },
+    "supplement-B-independent-time": {
+      "scope": "independent-time",
+      "acquired_at": "2026-11-24T11:10:00+08:00",
+      "calibration_versions": ["video-frame-time-source-v9", "meter-sync-pulse-v7"],
+      "time_windows": [
+        {"action": "open_panel", "window_ms": [1880.0, 1920.0], "source": "independent-video-frame-time"},
+        {"action": "deenergize", "window_ms": [2985.0, 3015.0], "source": "meter-sync-pulse"}
+      ],
+      "anchor_isolation": "independent scope; must not calibrate the camera/meter offsets"
+    }
+  },
+  "legacy_certificate": {
+    "certificate_id": "cert-legacy-wrong-complete",
+    "version": 1,
+    "status": "完整",
+    "issued_at": "2026-11-24T09:05:00+08:00",
+    "flaw": "issued on set membership of action names without clock reconciliation"
+  }
+}
