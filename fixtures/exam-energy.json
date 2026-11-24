@@ -1,0 +1,9 @@
+{
+  "stations":["S7","S8"],
+  "readings":[
+    {"id":"master","start":1000,"end":1120},
+    {"id":"S7-direct","start":30,"end":70},
+    {"id":"S8-direct","start":20,"end":50},
+    {"id":"shared-hvac","start":200,"end":250}
+  ]
+}
