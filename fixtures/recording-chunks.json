@@ -1,5 +1,5 @@
 [
-  {"upload_id":"u1","device":"cam-a","frames":"0-99","raw_sha":"a1"},
-  {"upload_id":"u2","device":"cam-a","frames":"100-199","raw_sha":"a2"},
-  {"upload_id":"u3","device":"relay-b","frames":"100-199","raw_sha":"b3"}
+  {"upload_id":"u1","device":"cam-a","camera":"cam-a","frames":"0-99","raw_sha":"a1","route":["cam-a","center"],"encoding":"original","frame_digest":"cam-a|0-99|fd0"},
+  {"upload_id":"u2","device":"cam-a","camera":"cam-a","frames":"100-199","raw_sha":"a2","route":["cam-a","center"],"encoding":"original","frame_digest":"cam-a|100-199|fd1"},
+  {"upload_id":"u3","device":"relay-b","camera":"cam-a","frames":"100-199","raw_sha":"b3","route":["cam-a","relay-b","center"],"encoding":"reencoded:h264>h265","frame_digest":"cam-a|100-199|fd1"}
 ]
