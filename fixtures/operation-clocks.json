@@ -1,0 +1,4 @@
+[
+  {"id":"cam-open","device":"camera","tick":10,"action":"open_panel","received_at":30},
+  {"id":"tool-off","device":"meter","tick":20,"action":"deenergize","received_at":31}
+]
