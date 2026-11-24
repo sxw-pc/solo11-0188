@@ -1,8 +1,21 @@
 {
-  "station":"S7","people":8,"clear_by_minute":15,
-  "routes":[
-    {"id":"east","station":"S7","minutes":4,"capacity":8,"accessible":true,"smoke":true},
-    {"id":"west","station":"S7","minutes":6,"capacity":4,"accessible":true,"smoke":false},
-    {"id":"south","station":"S7","minutes":8,"capacity":8,"accessible":true,"smoke":false}
-  ]
+  "station": "S7",
+  "people": 8,
+  "wheelchair": 1,
+  "clear_by_minute": 15,
+  "routes": [
+    {"id": "east", "station": "S7", "minutes": 4, "capacity": 8, "accessible": true, "smoke": true},
+    {"id": "west", "station": "S7", "minutes": 6, "capacity": 4, "accessible": true, "smoke": false},
+    {"id": "south", "station": "S7", "minutes": 8, "capacity": 8, "accessible": true, "smoke": false}
+  ],
+  "escort_windows": [
+    {"route": "east", "from_minute": 0, "to_minute": 15, "wheelchair_slots": 1},
+    {"route": "west", "from_minute": 0, "to_minute": 15, "wheelchair_slots": 1},
+    {"route": "south", "from_minute": 0, "to_minute": 15, "wheelchair_slots": 1}
+  ],
+  "smoke_events": [
+    {"corridor": "east", "device_clock_minute": 0, "uploaded_minute": 0, "from_minute": 0, "to_minute": 15}
+  ],
+  "releases": [],
+  "receipts": []
 }
