@@ -1,9 +1,976 @@
 {
-  "stations":["S7","S8"],
-  "readings":[
-    {"id":"master","start":1000,"end":1120},
-    {"id":"S7-direct","start":30,"end":70},
-    {"id":"S8-direct","start":20,"end":50},
-    {"id":"shared-hvac","start":200,"end":250}
+  "schema": "skillstation.exam-energy/2-master-sub-reconciliation",
+  "hall": "S7/S8 实操考场",
+  "billing_period": {
+    "id": "2026-10-exam",
+    "start": "2026-10-01T00:00:00+08:00",
+    "end": "2026-11-01T00:00:00+08:00"
+  },
+  "stations": [
+    "S7",
+    "S8"
+  ],
+  "station_profiles": [
+    {
+      "id": "S7",
+      "name": "S7 实操考场"
+    },
+    {
+      "id": "S8",
+      "name": "S8 实操考场"
+    }
+  ],
+  "topology_required_parties": [
+    "venue",
+    "S7",
+    "S8"
+  ],
+  "topology": {
+    "v": 1,
+    "doc": {
+      "topology_id": "TOPO-HALL78-202610",
+      "period_id": "2026-10-exam",
+      "root": "master",
+      "signed_hierarchy": "主表 master 包住 S7-direct、S8-direct、shared-hvac 三只分表",
+      "edges": [
+        {
+          "parent": "master",
+          "child": "S7-direct",
+          "role": "direct",
+          "station": "S7"
+        },
+        {
+          "parent": "master",
+          "child": "S8-direct",
+          "role": "direct",
+          "station": "S8"
+        },
+        {
+          "parent": "master",
+          "child": "shared-hvac",
+          "role": "shared",
+          "serves": "HVAC"
+        }
+      ]
+    },
+    "sha256": "5b16a02c390e3a7fd393bceecd35cb93ddfc9b106c79951b9c2b018eba74c8e3",
+    "signoffs": [
+      {
+        "party": "venue",
+        "by": "场馆后勤能源主管",
+        "at": "2026-09-30T17:00:00+08:00",
+        "ack": "5b16a02c390e3a7fd393bceecd35cb93ddfc9b106c79951b9c2b018eba74c8e3"
+      },
+      {
+        "party": "S7",
+        "by": "S7 项目授权代表",
+        "at": "2026-09-30T17:00:00+08:00",
+        "ack": "5b16a02c390e3a7fd393bceecd35cb93ddfc9b106c79951b9c2b018eba74c8e3"
+      },
+      {
+        "party": "S8",
+        "by": "S8 项目授权代表",
+        "at": "2026-09-30T17:00:00+08:00",
+        "ack": "5b16a02c390e3a7fd393bceecd35cb93ddfc9b106c79951b9c2b018eba74c8e3"
+      }
+    ]
+  },
+  "current_agreement_id": "AGR-HVAC-202610-HEAT",
+  "meters": [
+    {
+      "id": "master",
+      "role": "master",
+      "multiplier": 1,
+      "certified_net_kwh": 120,
+      "readings": [
+        {
+          "at": "2026-10-01T00:00:00+08:00",
+          "value": 1000,
+          "evidence": "EV-MASTER-START"
+        },
+        {
+          "at": "2026-11-01T00:00:00+08:00",
+          "value": 1120,
+          "evidence": "EV-MASTER-END"
+        }
+      ]
+    },
+    {
+      "id": "S7-direct",
+      "role": "direct",
+      "station": "S7",
+      "parent": "master",
+      "multiplier": 1,
+      "readings": [
+        {
+          "at": "2026-10-01T00:00:00+08:00",
+          "value": 30,
+          "evidence": "EV-S7-START"
+        },
+        {
+          "at": "2026-11-01T00:00:00+08:00",
+          "value": 70,
+          "evidence": "EV-S7-END"
+        }
+      ]
+    },
+    {
+      "id": "S8-direct",
+      "role": "direct",
+      "station": "S8",
+      "parent": "master",
+      "multiplier": 1,
+      "readings": [
+        {
+          "at": "2026-10-01T00:00:00+08:00",
+          "value": 20,
+          "evidence": "EV-S8-START"
+        },
+        {
+          "at": "2026-11-01T00:00:00+08:00",
+          "value": 50,
+          "evidence": "EV-S8-END"
+        }
+      ]
+    },
+    {
+      "id": "shared-hvac",
+      "role": "shared",
+      "parent": "master",
+      "serves": "HVAC",
+      "multiplier": 1,
+      "readings": [
+        {
+          "at": "2026-10-01T00:00:00+08:00",
+          "value": 200,
+          "evidence": "EV-HVAC-START"
+        },
+        {
+          "at": "2026-11-01T00:00:00+08:00",
+          "value": 250,
+          "evidence": "EV-HVAC-END"
+        }
+      ]
+    }
+  ],
+  "readings": [
+    {
+      "id": "master",
+      "role": "master",
+      "start": 1000,
+      "end": 1120,
+      "multiplier": 1,
+      "parent": null,
+      "start_at": "2026-10-01T00:00:00+08:00",
+      "end_at": "2026-11-01T00:00:00+08:00"
+    },
+    {
+      "id": "S7-direct",
+      "role": "direct",
+      "station": "S7",
+      "parent": "master",
+      "start": 30,
+      "end": 70,
+      "multiplier": 1,
+      "start_at": "2026-10-01T00:00:00+08:00",
+      "end_at": "2026-11-01T00:00:00+08:00"
+    },
+    {
+      "id": "S8-direct",
+      "role": "direct",
+      "station": "S8",
+      "parent": "master",
+      "start": 20,
+      "end": 50,
+      "multiplier": 1,
+      "start_at": "2026-10-01T00:00:00+08:00",
+      "end_at": "2026-11-01T00:00:00+08:00"
+    },
+    {
+      "id": "shared-hvac",
+      "role": "shared",
+      "parent": "master",
+      "start": 200,
+      "end": 250,
+      "multiplier": 1,
+      "start_at": "2026-10-01T00:00:00+08:00",
+      "end_at": "2026-11-01T00:00:00+08:00"
+    }
+  ],
+  "agreement_records": [
+    {
+      "v": 1,
+      "doc": {
+        "agreement_id": "AGR-HVAC-202610-HEAT",
+        "period_id": "2026-10-exam",
+        "parties": [
+          "S7",
+          "S8"
+        ],
+        "shared_meter": "shared-hvac",
+        "method": "verified_thermal_load",
+        "evidence_id": "EV-LOAD-202610",
+        "claimed_share": {
+          "S7": "0.70",
+          "S8": "0.30"
+        },
+        "ratio_tolerance": "0.0001",
+        "title": "共享 HVAC 按校验实际热负载 70:30 分摊协议"
+      },
+      "sha256": "4aa709cfbcef08dda4fe86f28397d7e8cc108ec8c357346e65385c2dafa41055",
+      "signoffs": [
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-10-02T10:00:00+08:00",
+          "ack": "4aa709cfbcef08dda4fe86f28397d7e8cc108ec8c357346e65385c2dafa41055"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-10-02T10:00:00+08:00",
+          "ack": "4aa709cfbcef08dda4fe86f28397d7e8cc108ec8c357346e65385c2dafa41055"
+        }
+      ]
+    },
+    {
+      "v": 1,
+      "doc": {
+        "agreement_id": "AGR-HVAC-202610-AREA",
+        "period_id": "2026-10-exam",
+        "parties": [
+          "S7",
+          "S8"
+        ],
+        "method": "certified_area",
+        "evidence_id": "EV-AREA-202610",
+        "claimed_share": {
+          "S7": "0.50",
+          "S8": "0.50"
+        },
+        "ratio_tolerance": "0.0001",
+        "title": "共享 HVAC 按核证等面积 50:50 平摊协议"
+      },
+      "sha256": "47077e43ce17fb9dc23c56023925f9650aa448840f6281447f15f72d547af115",
+      "signoffs": [
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-10-02T10:05:00+08:00",
+          "ack": "47077e43ce17fb9dc23c56023925f9650aa448840f6281447f15f72d547af115"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-10-02T10:05:00+08:00",
+          "ack": "47077e43ce17fb9dc23c56023925f9650aa448840f6281447f15f72d547af115"
+        }
+      ]
+    }
+  ],
+  "evidence_records": [
+    {
+      "v": 1,
+      "doc": {
+        "evidence_id": "EV-LOAD-202610",
+        "kind": "verified_thermal_load",
+        "interval": {
+          "start": "2026-10-01T00:00:00+08:00",
+          "end": "2026-11-01T00:00:00+08:00"
+        },
+        "thermal_by_station": {
+          "S7": 350,
+          "S8": 150
+        },
+        "unit": "kWh-th",
+        "source": "两台校准热量表读数差 + BA 负载曲线积分交叉校核",
+        "sensor_refs": [
+          "Q-S7-09",
+          "Q-S8-09"
+        ],
+        "calibration": {
+          "certificate": "CAL-HEAT-2026-09",
+          "valid_until": "2027-09-30"
+        }
+      },
+      "sha256": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696",
+      "signoffs": [
+        {
+          "party": "venue",
+          "by": "场馆后勤能源主管",
+          "at": "2026-11-01T09:00:00+08:00",
+          "ack": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696"
+        },
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-11-01T09:00:00+08:00",
+          "ack": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-11-01T09:00:00+08:00",
+          "ack": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696"
+        }
+      ]
+    },
+    {
+      "v": 1,
+      "doc": {
+        "evidence_id": "EV-AREA-202610",
+        "kind": "certified_area",
+        "area_m2": {
+          "S7": 60,
+          "S8": 60
+        },
+        "unit": "m2",
+        "certificate_ids": {
+          "S7": "AREA-S7-2026-01",
+          "S8": "AREA-S8-2026-01"
+        },
+        "surveyor": "场馆测绘备案图则 ARCH-HALL78-ASBUILT"
+      },
+      "sha256": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c",
+      "signoffs": [
+        {
+          "party": "venue",
+          "by": "场馆后勤能源主管",
+          "at": "2026-09-28T15:00:00+08:00",
+          "ack": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c"
+        },
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-09-28T15:00:00+08:00",
+          "ack": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-09-28T15:00:00+08:00",
+          "ack": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c"
+        }
+      ]
+    }
+  ],
+  "expected_settlements": {
+    "AGR-HVAC-202610-HEAT": {
+      "S7": 75,
+      "S8": 45,
+      "unassigned_kwh": 0
+    },
+    "AGR-HVAC-202610-AREA": {
+      "S7": 65,
+      "S8": 55,
+      "unassigned_kwh": 0
+    }
+  },
+  "scenarios": {
+    "rollover_replacement": {
+      "billing_period": {
+        "id": "SCEN-ROLLOVER-REPLACEMENT",
+        "start": "2026-10-01T00:00:00+08:00",
+        "end": "2026-11-01T00:00:00+08:00"
+      },
+      "stations": [
+        "S7",
+        "S8"
+      ],
+      "topology_required_parties": [
+        "venue",
+        "S7",
+        "S8"
+      ],
+      "topology": {
+        "v": 1,
+        "doc": {
+          "topology_id": "TOPO-ROLLOVER",
+          "period_id": "SCEN-ROLLOVER-REPLACEMENT",
+          "root": "r-master",
+          "edges": [
+            {
+              "parent": "r-master",
+              "child": "r-s7",
+              "role": "direct",
+              "station": "S7"
+            },
+            {
+              "parent": "r-master",
+              "child": "r-s8",
+              "role": "direct",
+              "station": "S8"
+            },
+            {
+              "parent": "r-master",
+              "child": "r-hvac",
+              "role": "shared"
+            }
+          ]
+        },
+        "sha256": "495f4f72f6c78802e5e67d9cd56cd918fa1c09a18213cb8aab1e03a188952a46",
+        "signoffs": [
+          {
+            "party": "venue",
+            "by": "场馆后勤能源主管",
+            "at": "2026-09-30T17:00:00+08:00",
+            "ack": "495f4f72f6c78802e5e67d9cd56cd918fa1c09a18213cb8aab1e03a188952a46"
+          },
+          {
+            "party": "S7",
+            "by": "S7 项目授权代表",
+            "at": "2026-09-30T17:00:00+08:00",
+            "ack": "495f4f72f6c78802e5e67d9cd56cd918fa1c09a18213cb8aab1e03a188952a46"
+          },
+          {
+            "party": "S8",
+            "by": "S8 项目授权代表",
+            "at": "2026-09-30T17:00:00+08:00",
+            "ack": "495f4f72f6c78802e5e67d9cd56cd918fa1c09a18213cb8aab1e03a188952a46"
+          }
+        ]
+      },
+      "current_agreement_id": "AGR-ROLL-HEAT",
+      "meters": [
+        {
+          "id": "r-master",
+          "role": "master",
+          "multiplier": 1,
+          "readings": [
+            {
+              "at": "2026-10-01T00:00:00+08:00",
+              "value": 1000,
+              "evidence": "EV-RM-S"
+            },
+            {
+              "at": "2026-10-20T09:00:00+08:00",
+              "value": 1100,
+              "evidence": "EV-RM-REMOVE"
+            },
+            {
+              "at": "2026-10-20T11:00:00+08:00",
+              "value": 0,
+              "multiplier": 2,
+              "evidence": "EV-RM-INSTALL"
+            },
+            {
+              "at": "2026-11-01T00:00:00+08:00",
+              "value": 45,
+              "evidence": "EV-RM-E"
+            }
+          ],
+          "bridges": [
+            {
+              "after_at": "2026-10-20T11:00:00+08:00",
+              "kind": "replacement",
+              "old_final": 1100,
+              "new_initial": 0,
+              "old_multiplier": 1,
+              "new_multiplier": 2,
+              "old_serial": "RM-OLD-7",
+              "new_serial": "RM-NEW-7",
+              "evidence": "WO-REPL-1020"
+            }
+          ]
+        },
+        {
+          "id": "r-s7",
+          "role": "direct",
+          "station": "S7",
+          "parent": "r-master",
+          "readings": [
+            {
+              "at": "2026-10-01T00:00:00+08:00",
+              "value": 0
+            },
+            {
+              "at": "2026-11-01T00:00:00+08:00",
+              "value": 40
+            }
+          ]
+        },
+        {
+          "id": "r-s8",
+          "role": "direct",
+          "station": "S8",
+          "parent": "r-master",
+          "readings": [
+            {
+              "at": "2026-10-01T00:00:00+08:00",
+              "value": 0
+            },
+            {
+              "at": "2026-11-01T00:00:00+08:00",
+              "value": 30
+            }
+          ]
+        },
+        {
+          "id": "r-hvac",
+          "role": "shared",
+          "parent": "r-master",
+          "wrap_at": 10000,
+          "readings": [
+            {
+              "at": "2026-10-01T00:00:00+08:00",
+              "value": 9950,
+              "evidence": "EV-RH-S"
+            },
+            {
+              "at": "2026-10-15T12:00:00+08:00",
+              "value": 9980
+            },
+            {
+              "at": "2026-10-16T00:00:00+08:00",
+              "value": 10,
+              "evidence": "EV-ROLL-PHOTO"
+            },
+            {
+              "at": "2026-11-01T00:00:00+08:00",
+              "value": 70,
+              "evidence": "EV-RH-E"
+            }
+          ],
+          "bridges": [
+            {
+              "after_at": "2026-10-16T00:00:00+08:00",
+              "kind": "rollover",
+              "wrap_at": 10000,
+              "rollover_count": 1,
+              "evidence": "EV-ROLL-HVAC-1016"
+            }
+          ]
+        }
+      ],
+      "agreement_records": [
+        {
+          "v": 1,
+          "doc": {
+            "agreement_id": "AGR-ROLL-HEAT",
+            "period_id": "SCEN-ROLLOVER-REPLACEMENT",
+            "parties": [
+              "S7",
+              "S8"
+            ],
+            "shared_meter": "r-hvac",
+            "method": "verified_thermal_load",
+            "evidence_id": "EV-ROLL-LOAD",
+            "claimed_share": {
+              "S7": "0.70",
+              "S8": "0.30"
+            }
+          },
+          "sha256": "e8be165df58455e4808aeaf1f327c59d81481ed50873e09471eea2f6ab62ea8c",
+          "signoffs": [
+            {
+              "party": "S7",
+              "by": "S7 项目授权代表",
+              "at": "2026-10-02T10:00:00+08:00",
+              "ack": "e8be165df58455e4808aeaf1f327c59d81481ed50873e09471eea2f6ab62ea8c"
+            },
+            {
+              "party": "S8",
+              "by": "S8 项目授权代表",
+              "at": "2026-10-02T10:00:00+08:00",
+              "ack": "e8be165df58455e4808aeaf1f327c59d81481ed50873e09471eea2f6ab62ea8c"
+            }
+          ]
+        }
+      ],
+      "evidence_records": [
+        {
+          "v": 1,
+          "doc": {
+            "evidence_id": "EV-ROLL-LOAD",
+            "thermal_by_station": {
+              "S7": 840,
+              "S8": 360
+            }
+          },
+          "sha256": "8235b94c2fa7453a2a27a01754838ab781234e10e817cbcabd56c5c3f6b1ec1e",
+          "signoffs": [
+            {
+              "party": "venue",
+              "by": "场馆后勤能源主管",
+              "at": "2026-11-01T12:00:00+08:00",
+              "ack": "8235b94c2fa7453a2a27a01754838ab781234e10e817cbcabd56c5c3f6b1ec1e"
+            },
+            {
+              "party": "S7",
+              "by": "S7 项目授权代表",
+              "at": "2026-11-01T12:00:00+08:00",
+              "ack": "8235b94c2fa7453a2a27a01754838ab781234e10e817cbcabd56c5c3f6b1ec1e"
+            },
+            {
+              "party": "S8",
+              "by": "S8 项目授权代表",
+              "at": "2026-11-01T12:00:00+08:00",
+              "ack": "8235b94c2fa7453a2a27a01754838ab781234e10e817cbcabd56c5c3f6b1ec1e"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "master_kwh": 190,
+        "hvac_kwh": 120,
+        "billed": {
+          "S7": 124,
+          "S8": 66
+        },
+        "unassigned_kwh": 0
+      }
+    },
+    "clock_skew": {
+      "billing_period": {
+        "id": "SCEN-CLOCK-SKEW",
+        "start": "2026-07-01T00:00:00+08:00",
+        "end": "2026-08-01T00:00:00+08:00"
+      },
+      "stations": [
+        "S7",
+        "S8"
+      ],
+      "topology_required_parties": [
+        "venue",
+        "S7",
+        "S8"
+      ],
+      "topology": {
+        "v": 1,
+        "doc": {
+          "topology_id": "TOPO-CLOCK",
+          "period_id": "SCEN-CLOCK-SKEW",
+          "root": "c-master",
+          "edges": [
+            {
+              "parent": "c-master",
+              "child": "c-s7",
+              "role": "direct",
+              "station": "S7"
+            },
+            {
+              "parent": "c-master",
+              "child": "c-s8",
+              "role": "direct",
+              "station": "S8"
+            },
+            {
+              "parent": "c-master",
+              "child": "c-hvac",
+              "role": "shared"
+            }
+          ]
+        },
+        "sha256": "1512995f5fb16d737789fadc56a83957f8b842439b03320075ee485073618687",
+        "signoffs": [
+          {
+            "party": "venue",
+            "by": "场馆后勤能源主管",
+            "at": "2026-09-30T17:00:00+08:00",
+            "ack": "1512995f5fb16d737789fadc56a83957f8b842439b03320075ee485073618687"
+          },
+          {
+            "party": "S7",
+            "by": "S7 项目授权代表",
+            "at": "2026-09-30T17:00:00+08:00",
+            "ack": "1512995f5fb16d737789fadc56a83957f8b842439b03320075ee485073618687"
+          },
+          {
+            "party": "S8",
+            "by": "S8 项目授权代表",
+            "at": "2026-09-30T17:00:00+08:00",
+            "ack": "1512995f5fb16d737789fadc56a83957f8b842439b03320075ee485073618687"
+          }
+        ]
+      },
+      "current_agreement_id": "AGR-CLOCK-EQ",
+      "meters": [
+        {
+          "id": "c-master",
+          "role": "master",
+          "clock_sync": "SYNC-MASTER-NTP-202607",
+          "readings": [
+            {
+              "at": "2026-07-01T00:00:00+08:00",
+              "value": 5000
+            },
+            {
+              "at": "2026-08-01T00:00:00+08:00",
+              "value": 5120
+            }
+          ]
+        },
+        {
+          "id": "c-s7",
+          "role": "direct",
+          "station": "S7",
+          "parent": "c-master",
+          "clock_fast_seconds": 7200,
+          "clock_sync": "SYNC-S7-FAST-PHOTO",
+          "readings": [
+            {
+              "at": "2026-07-01T02:00:00+08:00",
+              "value": 30
+            },
+            {
+              "at": "2026-07-16T12:00:00+08:00",
+              "value": 55
+            },
+            {
+              "at": "2026-07-31T23:30:00+08:00",
+              "value": 68
+            },
+            {
+              "at": "2026-08-01T02:00:00+08:00",
+              "value": 70
+            }
+          ]
+        },
+        {
+          "id": "c-s8",
+          "role": "direct",
+          "station": "S8",
+          "parent": "c-master",
+          "clock_fast_seconds": -10800,
+          "clock_sync": "SYNC-S8-SLOW-GATEWAY",
+          "readings": [
+            {
+              "at": "2026-06-30T21:00:00+08:00",
+              "value": 20
+            },
+            {
+              "at": "2026-07-01T01:00:00+08:00",
+              "value": 24
+            },
+            {
+              "at": "2026-07-31T21:00:00+08:00",
+              "value": 50
+            },
+            {
+              "at": "2026-07-31T23:00:00+08:00",
+              "value": 52
+            }
+          ]
+        },
+        {
+          "id": "c-hvac",
+          "role": "shared",
+          "parent": "c-master",
+          "readings": [
+            {
+              "at": "2026-07-01T00:00:00+08:00",
+              "value": 200
+            },
+            {
+              "at": "2026-08-01T00:00:00+08:00",
+              "value": 250
+            }
+          ]
+        }
+      ],
+      "agreement_records": [
+        {
+          "v": 1,
+          "doc": {
+            "agreement_id": "AGR-CLOCK-EQ",
+            "period_id": "SCEN-CLOCK-SKEW",
+            "parties": [
+              "S7",
+              "S8"
+            ],
+            "shared_meter": "c-hvac",
+            "method": "equal_shares"
+          },
+          "sha256": "e61a75fe64e6f18c9a9e4a9f629c5549393a25d3142131e66ad263beadc51f35",
+          "signoffs": [
+            {
+              "party": "S7",
+              "by": "S7 项目授权代表",
+              "at": "2026-07-02T09:00:00+08:00",
+              "ack": "e61a75fe64e6f18c9a9e4a9f629c5549393a25d3142131e66ad263beadc51f35"
+            },
+            {
+              "party": "S8",
+              "by": "S8 项目授权代表",
+              "at": "2026-07-02T09:00:00+08:00",
+              "ack": "e61a75fe64e6f18c9a9e4a9f629c5549393a25d3142131e66ad263beadc51f35"
+            }
+          ]
+        }
+      ],
+      "evidence_records": [],
+      "expected": {
+        "master_kwh": 120,
+        "s7_direct": 40,
+        "s8_direct": 30,
+        "hvac_kwh": 50,
+        "billed": {
+          "S7": 65,
+          "S8": 55
+        },
+        "naive_nearest": {
+          "S7": 38,
+          "S8": 28,
+          "total_children": 116
+        }
+      }
+    }
+  },
+  "agreements": [
+    {
+      "v": 1,
+      "doc": {
+        "agreement_id": "AGR-HVAC-202610-HEAT",
+        "period_id": "2026-10-exam",
+        "parties": [
+          "S7",
+          "S8"
+        ],
+        "shared_meter": "shared-hvac",
+        "method": "verified_thermal_load",
+        "evidence_id": "EV-LOAD-202610",
+        "claimed_share": {
+          "S7": "0.70",
+          "S8": "0.30"
+        },
+        "ratio_tolerance": "0.0001",
+        "title": "共享 HVAC 按校验实际热负载 70:30 分摊协议"
+      },
+      "sha256": "4aa709cfbcef08dda4fe86f28397d7e8cc108ec8c357346e65385c2dafa41055",
+      "signoffs": [
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-10-02T10:00:00+08:00",
+          "ack": "4aa709cfbcef08dda4fe86f28397d7e8cc108ec8c357346e65385c2dafa41055"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-10-02T10:00:00+08:00",
+          "ack": "4aa709cfbcef08dda4fe86f28397d7e8cc108ec8c357346e65385c2dafa41055"
+        }
+      ]
+    },
+    {
+      "v": 1,
+      "doc": {
+        "agreement_id": "AGR-HVAC-202610-AREA",
+        "period_id": "2026-10-exam",
+        "parties": [
+          "S7",
+          "S8"
+        ],
+        "method": "certified_area",
+        "evidence_id": "EV-AREA-202610",
+        "claimed_share": {
+          "S7": "0.50",
+          "S8": "0.50"
+        },
+        "ratio_tolerance": "0.0001",
+        "title": "共享 HVAC 按核证等面积 50:50 平摊协议"
+      },
+      "sha256": "47077e43ce17fb9dc23c56023925f9650aa448840f6281447f15f72d547af115",
+      "signoffs": [
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-10-02T10:05:00+08:00",
+          "ack": "47077e43ce17fb9dc23c56023925f9650aa448840f6281447f15f72d547af115"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-10-02T10:05:00+08:00",
+          "ack": "47077e43ce17fb9dc23c56023925f9650aa448840f6281447f15f72d547af115"
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "v": 1,
+      "doc": {
+        "evidence_id": "EV-LOAD-202610",
+        "kind": "verified_thermal_load",
+        "interval": {
+          "start": "2026-10-01T00:00:00+08:00",
+          "end": "2026-11-01T00:00:00+08:00"
+        },
+        "thermal_by_station": {
+          "S7": 350,
+          "S8": 150
+        },
+        "unit": "kWh-th",
+        "source": "两台校准热量表读数差 + BA 负载曲线积分交叉校核",
+        "sensor_refs": [
+          "Q-S7-09",
+          "Q-S8-09"
+        ],
+        "calibration": {
+          "certificate": "CAL-HEAT-2026-09",
+          "valid_until": "2027-09-30"
+        }
+      },
+      "sha256": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696",
+      "signoffs": [
+        {
+          "party": "venue",
+          "by": "场馆后勤能源主管",
+          "at": "2026-11-01T09:00:00+08:00",
+          "ack": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696"
+        },
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-11-01T09:00:00+08:00",
+          "ack": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-11-01T09:00:00+08:00",
+          "ack": "defe959417114c17ca685d30aa37411f9840fcda3e027aa6cb6f523d775ed696"
+        }
+      ]
+    },
+    {
+      "v": 1,
+      "doc": {
+        "evidence_id": "EV-AREA-202610",
+        "kind": "certified_area",
+        "area_m2": {
+          "S7": 60,
+          "S8": 60
+        },
+        "unit": "m2",
+        "certificate_ids": {
+          "S7": "AREA-S7-2026-01",
+          "S8": "AREA-S8-2026-01"
+        },
+        "surveyor": "场馆测绘备案图则 ARCH-HALL78-ASBUILT"
+      },
+      "sha256": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c",
+      "signoffs": [
+        {
+          "party": "venue",
+          "by": "场馆后勤能源主管",
+          "at": "2026-09-28T15:00:00+08:00",
+          "ack": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c"
+        },
+        {
+          "party": "S7",
+          "by": "S7 项目授权代表",
+          "at": "2026-09-28T15:00:00+08:00",
+          "ack": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c"
+        },
+        {
+          "party": "S8",
+          "by": "S8 项目授权代表",
+          "at": "2026-09-28T15:00:00+08:00",
+          "ack": "4bbc70b1aff5dbfde7844fedfa09fb1a0f5f2797f494cfa866884744ba83c06c"
+        }
+      ]
+    }
   ]
 }
