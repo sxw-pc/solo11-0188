@@ -1,0 +1,5 @@
+[
+  {"upload_id":"u1","device":"cam-a","frames":"0-99","raw_sha":"a1"},
+  {"upload_id":"u2","device":"cam-a","frames":"100-199","raw_sha":"a2"},
+  {"upload_id":"u3","device":"relay-b","frames":"100-199","raw_sha":"b3"}
+]
