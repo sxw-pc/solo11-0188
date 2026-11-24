@@ -1,0 +1,10 @@
+{
+  "lots": [
+    {"id":"F1","part":"filter","quantity":5,"expiry":"2026-05-02","grade":"A"},
+    {"id":"F2","part":"filter","quantity":5,"expiry":"2026-05-30","grade":"B"}
+  ],
+  "requests": [
+    {"id":"exam-A","part":"filter","quantity":4,"date":"2026-05-01","required_grade":"A"},
+    {"id":"exam-B","part":"filter","quantity":4,"date":"2026-05-05","required_grade":"B"}
+  ]
+}
