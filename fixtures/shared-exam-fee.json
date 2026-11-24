@@ -1,0 +1,7 @@
+{
+  "canceled": "C1",
+  "payments": [
+    {"id":"p1","payer":"Employer-E","amount":600,"beneficiaries":["C1","C2"]},
+    {"id":"p2","payer":"C2","amount":100,"beneficiaries":["C2"]}
+  ]
+}
